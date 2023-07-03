@@ -99,7 +99,7 @@ const displayApiDetailsDataLoad = (modalData) => {
                     <div class="bg-light rounded p-lg-2"><span>${pricing ? pricing[2].price : 'Free of Cost'} <br> ${pricing ? pricing[2].plan : 'Enterprise'}</span></div>
                 </div>
 
-                <div class="d-flex justify-content-between">
+                <div class="d-flex  justify-content-between">
                     <div>
                         <h5 class="card-title">Features</h5>
                         <ul>${featuresArray.map(list => `<li>${list}</li>`).join('')}</ul>
@@ -115,7 +115,7 @@ const displayApiDetailsDataLoad = (modalData) => {
 
     <div class="col">
         <div class="card text-center shadow h-100 ">
-            <div><span class="badge text-bg-danger w-30 p-2 position-absolute end-0">${accuracy.score ? accuracy.score * 100 + accuracyString : ''}</span>
+            <div><span class="badge text-bg-primary w-30 p-3 position-absolute end-0">${accuracy.score ? accuracy.score * 100 + accuracyString : ''}</span>
             <img src="${image_link[0]}" class="card-img-top" alt=""></div>
             <div class="card-body my-5">
                 <h5 class="card-title">${input_output_examples ? input_output_examples[0].input : 'Can you give any example?'}</h5>
