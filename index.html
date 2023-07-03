@@ -29,27 +29,75 @@
 
             </div>
         </section>
-<!-- Card Section End -->
+        <!-- Card Section End -->
 
 
 
 
-
-<!-- Show More Buttoon -->
-        <section id="show-more" class="text-center mb-4">
-            <button id="btn-show-more" type="button" class="btn btn-success">Show More</button>
-        </section>
-<!-- Show More Buttoon End -->
 
 
 
 
      
+        <section class="modal-section">
+
+            <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="modal-body" class="modal-body p-5">
+                          
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+ 
        
+        // all cards  data display function from API :
 
 
+        const displayApiDataLoad = (data,loadData) => {
+            Spinner(true)
+        
+            const showMoreSection = document.getElementById('show-more')
+            if (loadData !== 6 && data.length > 6) {
+                data = data.slice(0, 6)
+                showMoreSection.classList.remove('d-none')
+            }
+            else {
+                showMoreSection.classList.add('d-none')
+            }
 
 
+            // all cards  data display function from API :
+
+
+            const displayApiDataLoad = (data,loadData) => {
+                Spinner(true)
+            
+                const showMoreSection = document.getElementById('show-more')
+                if (loadData !== 6 && data.length > 6) {
+                    data = data.slice(0, 6)
+                    showMoreSection.classList.remove('d-none')
+                }
+                else {
+                    showMoreSection.classList.add('d-none')
+                }
+        <!-- Spinner section starts-->
+        <section class="spinner-section">
+            
+                <div class="spinner-border text-danger" role="status">
+                    <span class="visually-hidden"></span>
+                </div>
+            </div>
+        </section>
+        <!-- Spinner End -->
+   
 
 
     <!-- Js Scripts -->
