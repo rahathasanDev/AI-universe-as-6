@@ -145,3 +145,14 @@ const showAllFunction = (dataLimit = 6) => {
 }
 
 
+// sort by date function
+const sortByDate = async (dataLimit) => {
+    const url = 'https://openapi.programming-hero.com/api/ai/tools'
+    const res = await fetch(url);
+    const data = await res.json();
+    const sortData = data.data.tools.sort(function (a, b) {
+        return new Date(a.published_in) - new Date(b.published_in)
+    });
+    displayApiDataLoad(sortData, dataLimit)
+}
+
