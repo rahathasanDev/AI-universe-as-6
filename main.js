@@ -60,10 +60,27 @@ const displayApiDataLoad = (data,loadData) => {
     Spinner(false)
 }
 
+// spinner function
+
+const Spinner = loading => {
+    const spinnerSection = document.getElementById('spinner');
+    if (loading) {
+        spinnerSection.classList.add('d-none')
+    }
+}
 
 
 
 
+// details button api load function
+
+const apiDetailsDataLoad =(id) => {
+    const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayApiDetailsDataLoad(data.data))
+
+}
 
 
 
