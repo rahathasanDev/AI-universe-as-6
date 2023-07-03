@@ -48,7 +48,7 @@ const displayApiDataLoad = (data,loadData) => {
                         </div>
                     </div>
 
-                    <div onclick ="apiDetailsDataLoad('${card.id}')" style="width: 50px;" data-bs-toggle="modal" data-bs-target="#detailsModal"><img src="deatils-icon.png"</img></div>
+                    <div onclick ="apiDetailsDataLoad('${card.id}')" style="width: 50px;" data-bs-toggle="modal" data-bs-target="#detailsModal"><img src="https://spiffy-babka-2c6ac4.netlify.app/deatils-icon.png"</img></div>
 
                 </div>
             </div>
@@ -81,6 +81,58 @@ const apiDetailsDataLoad =(id) => {
         .then(data => displayApiDetailsDataLoad(data.data))
 
 }
+//  details button api data display function
+
+const displayApiDetailsDataLoad = (modalData) => {
+   
+    const featuresValues = Object.values(modalData.features)
+    let featuresArray = []
+    for (const featuresValue of featuresValues) {
+        featuresArray.push(featuresValue.feature_name)
+    }
+    const accuracyString = "% Accuracy";
+    const { description, pricing, image_link, input_output_examples, accuracy, integrations } = modalData
+    const modalBody = document.getElementById('modal-body');
+    modalBody.innerHTML = `
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col">
+        <div class="card bg-danger bg-gradient shadow h-100">
+            <div class="card-body p-3 text-white">
+                <h5 class="card-title">${description ? description : 'HEllo bro'}</h5>
+                <div class="d-flex justify-content-around text-black gap-2 fw-semibold text-center my-5">
+                    <div class="bg-light rounded p-lg-2"><span>${pricing ? pricing[0].price : 'Free of Cost'} <br> ${pricing ? pricing[0].plan : 'Basic'}</span></div>
+                    <div class="bg-light rounded p-lg-2"><span>${pricing ? pricing[1].price : 'Free of Cost'} <br> ${pricing ? pricing[1].plan : 'Pro'}</span></div>
+                    <div class="bg-light rounded p-lg-2"><span>${pricing ? pricing[2].price : 'Free of Cost'} <br> ${pricing ? pricing[2].plan : 'Enterprise'}</span></div>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h5 class="card-title">Features</h5>
+                        <ul>${featuresArray.map(list => `<li>${list}</li>`).join('')}</ul>
+                    </div>
+                    <div>
+                        <h5 class="card-title">Integrations</h5>
+                        <ul>${integrations ? integrations.map(list => `<li>${list}</li>`).join('') : 'No data Found'}</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card text-center shadow h-100 ">
+            <div><span class="badge text-bg-danger w-30 p-2 position-absolute end-0">${accuracy.score ? accuracy.score * 100 + accuracyString : ''}</span>
+            <img src="${image_link[0]}" class="card-img-top" alt=""></div>
+            <div class="card-body my-5">
+                <h5 class="card-title">${input_output_examples ? input_output_examples[0].input : 'Can you give any example?'}</h5>
+                <p class="card-text">${input_output_examples ? input_output_examples[0].output : 'No! Not Yet! Take a break!!!'}</p>
+            </div>
+        </div>
+    </div>
+</div>
+    `
+};
+
 
 
 
