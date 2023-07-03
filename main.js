@@ -133,6 +133,15 @@ const displayApiDetailsDataLoad = (modalData) => {
     `
 };
 
+const showMoreButton = document.getElementById('btn-show-more');
+showMoreButton.addEventListener('click', function () {
+    showAllFunction()
+})
 
+//show more button function
+const showAllFunction = (dataLimit = 6) => {
+    apiDataLoad(dataLimit)
+    sortByDate(dataLimit)
+}
 
 
