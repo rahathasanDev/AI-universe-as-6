@@ -43,12 +43,12 @@ const displayApiDataLoad = (data,loadData) => {
                     <div>
                         <h5 class="card-title">${card.name}</h5>
                         <div class="d-flex gap-2 align-items-center">
-                            <img src="Vector.png"</img>
+                            <img src="icon.png"</img>
                             <p class="card-text">${card.published_in}</p>
                         </div>
                     </div>
 
-                    <div onclick ="apiDetailsDataLoad('${card.id}')" style="width: 50px;" data-bs-toggle="modal" data-bs-target="#detailsModal"><img src="https://spiffy-babka-2c6ac4.netlify.app/deatils-icon.png"</img></div>
+                    <div onclick ="apiDetailsDataLoad('${card.id}')" style="width: 50px;" data-bs-toggle="modal" data-bs-target="#detailsModal"><img src=".png"</img></div>
 
                 </div>
             </div>
