@@ -1,16 +1,14 @@
 
 // all Cards api load function :
-
 const apiDataLoad = loadData => {
     const url = 'https://openapi.programming-hero.com/api/ai/tools'
     fetch(url)
-    .then(res => res.json())
-    .then(data => displayApiDataLoad(data.data.tools, loadData))
+      .then(res => res.json())
+      .then(data => displayApiDataLoad(data.data.tools, loadData))
 
 }
 
 // all cards  data display function from API :
-
 
 const displayApiDataLoad = (data,loadData) => {
     Spinner(true)
@@ -48,7 +46,7 @@ const displayApiDataLoad = (data,loadData) => {
                         </div>
                     </div>
 
-                    <div onclick ="apiDetailsDataLoad('${card.id}')" style="width: 50px;" data-bs-toggle="modal" data-bs-target="#detailsModal"><img src=".png"</img></div>
+               <div class="" onclick ="apiDetailsDataLoad('${card.id}')" style="width: 50px;" data-bs-toggle="modal" data-bs-target="#detailsModal"><img src="arrow.png"</img></div>
 
                 </div>
             </div>
@@ -68,11 +66,7 @@ const Spinner = loading => {
         spinnerSection.classList.add('d-none')
     }
 }
-
-
-
-
-// details button api load function
+// details button api load function:
 
 const apiDetailsDataLoad =(id) => {
     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`
@@ -81,7 +75,7 @@ const apiDetailsDataLoad =(id) => {
         .then(data => displayApiDetailsDataLoad(data.data))
 
 }
-//  details button api data display function
+//  details button modal - api data display function :
 
 const displayApiDetailsDataLoad = (modalData) => {
    
@@ -94,10 +88,10 @@ const displayApiDetailsDataLoad = (modalData) => {
     const { description, pricing, image_link, input_output_examples, accuracy, integrations } = modalData
     const modalBody = document.getElementById('modal-body');
     modalBody.innerHTML = `
-    <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="row row-cols-1 row-cols-md-2 g-2">
     <div class="col">
-        <div class="card bg-danger bg-gradient shadow h-100">
-            <div class="card-body p-3 text-white">
+        <div class="card  bg-secondary bg-gradient shadow h-100">
+            <div class="card-body p-3 text-black">
                 <h5 class="card-title">${description ? description : 'HEllo bro'}</h5>
                 <div class="d-flex justify-content-around text-black gap-2 fw-semibold text-center my-5">
                     <div class="bg-light rounded p-lg-2"><span>${pricing ? pricing[0].price : 'Free of Cost'} <br> ${pricing ? pricing[0].plan : 'Basic'}</span></div>
@@ -138,14 +132,14 @@ showMoreButton.addEventListener('click', function () {
     showAllFunction()
 })
 
-//show more button function
+//show more button function :
 const showAllFunction = (dataLimit = 6) => {
     apiDataLoad(dataLimit)
     sortByDate(dataLimit)
 }
 
 
-// sort by date function
+// sort by date function:
 const sortByDate = async (dataLimit) => {
     const url = 'https://openapi.programming-hero.com/api/ai/tools'
     const res = await fetch(url);
